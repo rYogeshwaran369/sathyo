@@ -7,6 +7,7 @@ import Home from "../Home/Home";
 import Forget_Password from "../Authentiction/Forget_password";
 import Email_Sent from "../Authentiction/Email_Sent";
 import News from "../News/News";
+import Podcasts from "../Podcasting/Podcasts";
 
 const Stack = createStackNavigator();
 
@@ -63,6 +64,22 @@ export default function AppStack() {
                 }}
                 component={News}
             />
+            <Stack.Screen
+                name="Podcast"
+                options={{
+                    headerBackImage: () => (
+                        <View style={styles.backImageContainer}>
+                            <Image
+                                style={styles.backImage}
+                                source={{ uri: 'https://res.cloudinary.com/dkkkl3td3/image/upload/v1722829874/vayqnwazm9xtrmffrkqp.png' }}
+                            />
+                        </View>
+                    ),
+                    headerTitle:''
+                }}
+                component={Podcasts}
+            />
+
         </Stack.Navigator>
     );
 }
@@ -83,6 +100,6 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        // marginRight: , // add margin to the right
+        // marginRight: , 
     },
 });

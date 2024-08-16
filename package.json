@@ -5,21 +5,23 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "ios": "expo start --ios"
   },
   "dependencies": {
+    "@expo/metro-runtime": "~3.2.3",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/stack": "^6.4.1",
-    "expo": "~51.0.24",
+    "expo": "~51.0.28",
+    "expo-av": "~14.0.6",
     "expo-status-bar": "~1.12.1",
-    "react": "18.2.0",
-    "react-native": "0.74.3",
+    "react": "^18.2.0",
+    "react-native": "^0.74.5",
     "react-native-fast-image": "^8.6.3",
-    "react-native-gesture-handler": "^2.18.1",
+    "react-native-gesture-handler": "~2.16.1",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-swiper": "^1.6.0",
-    "react-native-swiper-animated": "^1.5.3"
+    "react-native-swiper-animated": "^1.5.3",
+    "react-native-webview": "13.8.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

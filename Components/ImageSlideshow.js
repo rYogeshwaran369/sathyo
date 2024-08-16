@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 170,
     width: '100%',
-    borderRadius: 20, // Increased border radius for more curvature
-    overflow: 'hidden', // Ensures the image respects the container's rounded corners
-    backgroundColor: '#fff', // Optional: background color if needed
+    borderRadius: 20,
+    overflow: 'hidden',
+    backgroundColor: '#fff',
   },
   wrapper: {},
   slide: {

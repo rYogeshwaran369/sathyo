@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, SafeAreaView, StatusBar, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import ImageSlideshow from '../../Components/ImageSlideshow';
 import News_Details from '../../Components/News_Details';
-import NewsFeedCard from '../../Components/NewsFeedCard';
 
 const Top = StatusBar.currentHeight;
 
@@ -36,7 +35,7 @@ export default class Home extends Component {
               <Text style={styles.headerText}>Master Sri Ji</Text>
               </View>
               <View style={{alignItems:'flex-end',justifyContent:'flex-end'}}>
-              <Text style={{fontSize:13,color:'#007DFE',fontWeight:'600'}}>View More</Text>
+              <Text onPress={()=>{this.props.navigation.navigate("Podcast")}} style={{fontSize:13,color:'#007DFE',fontWeight:'600'}}>View More</Text>
               </View>
             </View>
 
