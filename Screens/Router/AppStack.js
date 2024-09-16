@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Image, View, StyleSheet } from "react-native";
+// Import the custom header
 import Login from "../Authentiction/Login";
 import Sign_up from "../Authentiction/Sign_up";
 import Home from "../Home/Home";
@@ -8,6 +8,11 @@ import Forget_Password from "../Authentiction/Forget_password";
 import Email_Sent from "../Authentiction/Email_Sent";
 import News from "../News/News";
 import Podcasts from "../Podcasting/Podcasts";
+import Chat_page from "../Chat_room/Chat_page";
+import MeditationTimer from "../Meditation/MeditationTimer";
+import Meditation_Page from "../Meditation/Meditation_page";
+import Jabam from "../Meditation/Jabam";
+import AppHeader from "../../Components/AppHeader";
 
 const Stack = createStackNavigator();
 
@@ -27,15 +32,8 @@ export default function AppStack() {
             <Stack.Screen
                 name="Home"
                 options={{
-                    headerBackImage: () => (
-                        <View style={styles.backImageContainer}>
-                            <Image
-                                style={styles.backImage}
-                                source={{ uri: 'https://res.cloudinary.com/dkkkl3td3/image/upload/v1722829874/vayqnwazm9xtrmffrkqp.png' }}
-                            />
-                        </View>
-                    ),
-                    headerTitle:''
+                    headerTitle: '', 
+                    header: (props) => <AppHeader {...props} /> // Use the custom header
                 }}
                 component={Home}
             />
@@ -52,54 +50,51 @@ export default function AppStack() {
             <Stack.Screen
                 name="News"
                 options={{
-                    headerBackImage: () => (
-                        <View style={styles.backImageContainer}>
-                            <Image
-                                style={styles.backImage}
-                                source={{ uri: 'https://res.cloudinary.com/dkkkl3td3/image/upload/v1722829874/vayqnwazm9xtrmffrkqp.png' }}
-                            />
-                        </View>
-                    ),
-                    headerTitle:''
+                    headerTitle: '', 
+                    header: (props) => <AppHeader {...props} /> // Use the custom header
                 }}
                 component={News}
             />
             <Stack.Screen
                 name="Podcast"
                 options={{
-                    headerBackImage: () => (
-                        <View style={styles.backImageContainer}>
-                            <Image
-                                style={styles.backImage}
-                                source={{ uri: 'https://res.cloudinary.com/dkkkl3td3/image/upload/v1722829874/vayqnwazm9xtrmffrkqp.png' }}
-                            />
-                        </View>
-                    ),
-                    headerTitle:''
+                    headerTitle: '', 
+                    header: (props) => <AppHeader {...props} /> // Use the custom header
                 }}
                 component={Podcasts}
             />
-
+            <Stack.Screen
+                name="Chat_room"
+                options={{
+                    headerTitle: '', 
+                    header: (props) => <AppHeader {...props} /> // Use the custom header
+                }}
+                component={Chat_page}
+            />
+            <Stack.Screen
+                name="MeditationTimer"
+                options={{
+                    headerTitle: '', 
+                    header: (props) => <AppHeader {...props} /> // Use the custom header
+                }}
+                component={MeditationTimer}
+            />
+            <Stack.Screen
+                name="Meditation_page"
+                options={{
+                    headerTitle: '', 
+                    header: (props) => <AppHeader {...props} /> // Use the custom header
+                }}
+                component={Meditation_Page}
+            />
+            <Stack.Screen
+                name="Jabam"
+                options={{
+                    headerTitle: '', 
+                    header: (props) => <AppHeader {...props} /> // Use the custom header
+                }}
+                component={Jabam}
+            />
         </Stack.Navigator>
     );
 }
-
-const styles = StyleSheet.create({
-    backImageContainer: {
-        alignItems: 'center',
-        width: '60%',
-        marginLeft: '2%',
-    },
-    backImage: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'contain',
-    },
-    circleTitle: {
-        backgroundColor: 'black',
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-        // marginRight: , 
-    },
-});

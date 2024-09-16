@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, SafeAreaView, ScrollView, StyleSheet, Button, Modal } from 'react-native';
 import ImageSlideshow from '../../Components/ImageSlideshow';
-import Podcast_card from '../../Components/Podcast_card';
 import WebView from 'react-native-webview';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { getFirestore, collection, getDocs } from 'firebase/firestore'; // Import Firestore functions
+import Jabam_Card from '../../Components/Jabam_Card';
 
-export default class Podcasts extends Component {
+export default class Jabam extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +23,7 @@ export default class Podcasts extends Component {
   fetchFeeds = async () => {
     try {
       const db = getFirestore(); // Get Firestore instance
-      const querySnapshot = await getDocs(collection(db, "voice"));
+      const querySnapshot = await getDocs(collection(db, "jabam"));
       const feedsData = querySnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
@@ -40,7 +40,8 @@ export default class Podcasts extends Component {
 
   render() {
     const { modalVisible, feeds, modalUri } = this.state;
-    // console.log(feeds);
+    console.log(feeds);
+
 
     return (
       <SafeAreaView style={styles.safearea}>
@@ -53,29 +54,32 @@ export default class Podcasts extends Component {
           {/* Voice Section */}
           <View style={styles.voiceSection}>
             <View>
-              <View style={styles.headerView}>
-                <View>
-                  <Text style={{ fontSize: 13, fontWeight: 'bold' }}>Voice of</Text>
+              <View style={[styles.headerView]}>
+                <View style={{justifyContent:'center',alignItems:'center'}}>
+                  <Text style={{ fontSize: 13, fontWeight: 'black' }}>Jabam of</Text>
                   <Text style={[styles.headerText, { marginLeft: 3 }]}>Master Sri Ji</Text>
                 </View>
               </View>
             </View>
           </View>
 
+           {/* <Podcast_card/> */}
           {/* Podcasts */}
           <View style={styles.podcastSection}>
-            <ScrollView contentContainerStyle={{ padding: '3%', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+            {/* Add your Podcast cards here */}
+            <ScrollView contentContainerStyle={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
               {feeds.map((feed) => (
                 <View key={feed.id} style={styles.cardContainer}>
                   <TouchableOpacity
                     title="Play Audiomack"
-                    onPress={() => this.setModalVisible(true, feed.audio)}
+                    onPress={() => this.setModalVisible(true, feed.music_Link)}
                   >
-                    <Podcast_card title={feed.sub_title} image={feed.image} time={feed.paragraph}/>
+                    <Jabam_Card title={feed.title} image={feed.image_link} time={feed.time}/>
                   </TouchableOpacity>
                 </View>
               ))}
             </ScrollView>
+            {/* Button to open the Audiomack WebView modal */}
 
             {/* WebView Modal */}
             <Modal
@@ -87,7 +91,7 @@ export default class Podcasts extends Component {
               <View style={styles.modalContainer}>
                 <View style={styles.webviewContainer}>
                   <WebView
-                    source={{ uri: modalUri }} // Use the modalUri from the state
+                    source={{ uri: modalUri }}
                     style={{ width: '100%', height: '80%' }}
                     javaScriptEnabled={true}
                     scrollEnabled={false}
@@ -121,7 +125,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   headerView: {
-    marginBottom: 5,
+    marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -131,14 +135,12 @@ const styles = StyleSheet.create({
   },
   voiceSection: {
     paddingHorizontal: '2%',
+    justifyContent:'center',
+    alignItems:'center'
   },
   podcastSection: {
-    paddingHorizontal: '2%',
-    marginTop: 10,
-  },
-  cardContainer: {
-    width: '48%', // Adjust this width for two cards per row
-    marginBottom: '3%',
+    paddingHorizontal: '4%',
+    marginTop: 20,
   },
   modalContainer: {
     flex: 1,

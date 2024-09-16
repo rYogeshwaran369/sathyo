@@ -3,11 +3,12 @@ import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 
 export default class Podcast_card extends Component {
   render() {
+    const { title, image, time } = this.props;
     return (
       <View style={styles.cardView}>
         <View style={styles.row}>
           <ImageBackground
-            source={{ uri: 'https://res.cloudinary.com/djc99tekd/image/upload/v1723719615/sathyodhayam/qmad7qesjddv7vwdp9gg.png' }} // Replace with your image URL
+            source={{ uri: image }} // Replace with your image URL
             style={styles.imageBackground}
           />
           <View style={styles.textContainer}>
@@ -17,8 +18,8 @@ export default class Podcast_card extends Component {
         </View>
 
         <View style={styles.description}>
-          <Text style={styles.descriptionText}>இயற்கையை நம்புங்கள்</Text>
-          <Text style={styles.timeText}>6 minutes</Text>
+          <Text style={styles.descriptionText}>{title}</Text>
+          <Text style={styles.timeText}>{time} minutes</Text>
         </View>
       </View>
     );
@@ -54,14 +55,14 @@ const styles = StyleSheet.create({
     color: '#898989',
   },
   podcastText: {
-    fontSize: 11,
+    fontSize: 13,
     color: '#898989',
   },
   description: {
-    marginTop: 10,
+    marginTop: '1%',
   },
   descriptionText: {
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: 'bold',
   },
   timeText: {

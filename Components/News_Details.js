@@ -15,12 +15,15 @@ export default class News_Details extends Component {
 
   render() {
     const { expanded } = this.state;
+    const { date, title, imageUri, description } = this.props;
+    console.log(title)
+
     return (
       <View style={styles.container}>
         {/* Box for Image */}
         <View style={styles.imageBox}>
           <Image
-            source={{ uri: 'https://res.cloudinary.com/dkkkl3td3/image/upload/v1722782432/Sathyodhayam/vpoqragsagllubzuuj2k.jpg' }} // Replace with your image URL
+            source={{ uri: imageUri }} // Use the imageUri passed from props
             style={styles.newsImage}
             resizeMode='cover'
           />
@@ -28,13 +31,13 @@ export default class News_Details extends Component {
 
         {/* Date and Title */}
         <View style={styles.textContainer}>
-          <Text style={styles.date}>23/05/2023</Text>
+          <Text style={styles.date}>{date}</Text>
           <TouchableOpacity onPress={this.toggleExpand}>
-            <Text style={styles.title}>SPIRITUAL FORMULA for Solving Problems in Life</Text>
+            <Text style={styles.title}>{title}</Text>
           </TouchableOpacity>
           {expanded && (
             <Text style={styles.description}>
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets.
+              {description} {/* Display the description passed from props */}
             </Text>
           )}
         </View>
@@ -45,7 +48,7 @@ export default class News_Details extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: 330,
+    width: '100%',
     marginBottom: 15,
     borderRadius: 8,
     borderWidth: 1,
